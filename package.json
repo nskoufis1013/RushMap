@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.3.16",
+    "google-distance-api": "^1.0.0"
+  }
+}
