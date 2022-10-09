@@ -1,14 +1,34 @@
 function callBack() {
-  // Pass the Required Locations array as the parameter here
-  initMap([
-    [['801 S Hope St A, Los Angeles, CA 90017', 34.046438, -118.259653],
-  ['525 Santa Monica Blvd, Santa Monica, CA 90401', 34.017951, -118.493567]],
+  // Locations Array
 
- [['146 South Lake Avenue #106, At Shoppers Lane, Pasadena, CA 91101', 34.143073, -118.132040],
- ['21016 Pacific Coast Hwy, Huntington Beach, CA 92648', 33.655199, -117.998640]],
+  var locations = [
+    [['801 S Hope St A, Los Angeles, CA 90017', 34.046438, -118.25965],
+     ['525 Santa Monica Blvd, Santa Monica, CA 90401', 34.017951, -118.493567]],
 
- [['13005 Ventura Blvd, Studio City, CA 91604', 34.145670, -118.416730]]
-  ]);
+    [['146 South Lake Avenue #106, At Shoppers Lane, Pasadena, CA 91101', 34.143073, -118.132040],
+     ['21016 Pacific Coast Hwy, Huntington Beach, CA 92648', 33.655199, -117.998640]],
+
+    [['13005 Ventura Blvd, Studio City, CA 91604', 34.145670, -118.416730]]
+  ]
+
+var k, t;
+for (k = 0; k < locations.length; k++){
+  for (t = 0; t < locations[k].length; t++){
+    geocoder = new google.maps.Geocoder();
+      geocoder.geocode({
+          address: locations[k][t][0]
+      }, (results, status) => {
+          if (status == google.maps.GeocoderStatus.OK) {
+              console.log(results[0].geometry.location.lat());
+              console.log(results[0].geometry.location.lng());
+          } else {
+              alert('Geocode was not successful for the following reason: ' + status);
+          }
+      });
+  }
+}
+
+  initMap(locations);
 }
 
 function initMap(locationsArray) {
