@@ -1,0 +1,9 @@
+#map {
+    height: 600px;
+    width: 100%;
+    background-color: grey;
+  }
+  
+#form{
+    display: inline-flex;
+}
